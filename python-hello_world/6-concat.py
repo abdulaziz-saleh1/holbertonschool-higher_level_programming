@@ -1,4 +1,6 @@
 #!/usr/bin/python3
 str1 = "Holberton"
 str2 = "School"
-print("Welcome to {} {}!".format(str1,str2))
+# This prints the welcome message
+print("Welcome to {} {}!".format(str1, str2))
+# End of script
