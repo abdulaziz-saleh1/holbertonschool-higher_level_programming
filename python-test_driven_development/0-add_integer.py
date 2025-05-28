@@ -3,6 +3,7 @@
 This module defines a function that adds two integers.
 """
 
+
 def add_integer(a, b=98):
     """
     Adds two integers or floats and returns the result as an integer.
@@ -16,12 +17,13 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-    
+
     if isinstance(a, float):
         if a != a:
             raise ValueError("cannot convert float NaN to integer")
         if a in (float('inf'), -float('inf')):
             raise OverflowError("cannot convert float infinity to integer")
+
     if isinstance(b, float):
         if b != b:
             raise ValueError("cannot convert float NaN to integer")
