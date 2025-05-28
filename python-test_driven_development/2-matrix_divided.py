@@ -1,17 +1,6 @@
 #!/usr/bin/python3
 """
-Function that divides all elements of a matrix.
-
-Example:
-    matrix = [
-        [1, 2, 3],
-        [4, 5, 6]
-    ]
-    print(matrix_divided(matrix, 3))
-    print(matrix)
-
-    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
-    [[1, 2, 3], [4, 5, 6]]
+This module defines a function that divides all elements of a matrix.
 """
 
 
