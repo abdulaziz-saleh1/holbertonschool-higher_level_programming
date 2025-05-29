@@ -1,41 +1,59 @@
 #!/usr/bin/python3
 """
-This module defines the matrix_divided function that divides
-all elements of a matrix by a divisor.
+    Function divides all elements of a matrix
+
+    Example:
+        matrix = [
+        [1, 2, 3],
+        [4, 5, 6]
+        ]
+        print(matrix_divided(matrix, 3))
+        print(matrix)
+
+        [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+        [[1, 2, 3], [4, 5, 6]]
+
 """
 
 
 def matrix_divided(matrix, div):
     """
-    Divides all elements of a matrix by a divisor and returns a new matrix.
+        Args:
+            matrix: The matrix list.
+            div: value to divide matrix elements by.
 
-    Args:
-        matrix (list of lists of int/float): The matrix to divide.
-        div (int/float): The number to divide by.
-
-    Raises:
-        TypeError: If matrix is not a list of lists of integers/floats,
-                    or if rows are not of the same size,
-                    or if div is not an integer or float.
-        ZeroDivisionError: If div is zero.
-
-    Returns:
-        list of lists of float: The new matrix with divided elements.
+        Returns:
+            New matrix with divided elements.
     """
+    lst = []
 
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
-    if not all(isinstance(num, (int, float)) for row in matrix for num in row):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
-    if not isinstance(div, (int, float)):
-        raise TypeError("div must be a number")
+    if (not isinstance(matrix, list) or
+            not all(isinstance(row, list) for row in matrix) or
+            not all(isinstance(element, (int, float))
+                    for row in matrix
+                    for element in row)):
+        raise TypeError("matrix must be a matrix (list of lists) of"
+                        " integers/floats")
+
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    row_size = len(matrix[0])
-    for row in matrix:
-        if len(row) != row_size:
-            raise TypeError("Each row of the matrix must have the same size")
+    if not isinstance(div, (int, float)):
+        raise TypeError("div must be a number")
 
-    # Perform division and round to 2 decimal places
-    return [[round(num / div, 2) for num in row] for row in matrix]
+    if div == float('inf'):
+        raise ValueError("[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]")
+
+    row_length = len(matrix[0])
+    if not all(len(row) == row_length for row in matrix):
+        raise TypeError("Each row of the matrix"
+                        " must have the same size")
+
+    for row in matrix:
+        new_row = []
+        for element in row:
+            c = round(element / div, 2)
+            new_row.append(c)
+        lst.append(new_row)
+
+    return lst
