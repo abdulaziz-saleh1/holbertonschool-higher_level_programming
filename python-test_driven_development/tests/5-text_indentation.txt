@@ -1,18 +1,14 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
 >>> text_indentation("")
-
 >>> text_indentation()
 Traceback (most recent call last):
-    ...
-    TypeError: text_indentation() missing 1 required positional argument: 'text'
-
+TypeError: text_indentation() missing 1 required positional argument: 'text'
 >>> text_indentation(None)
 Traceback (most recent call last):
-    ...
-    TypeError: text must be a string
-
->>> text_indentation("!?;")  # caracteres no v!?
+TypeError: text must be a string
+>>> text_indentation("!?;")
+!?
 <BLANKLINE>
-;
 
 >>> text_indentation(".?:")
 .
@@ -21,7 +17,6 @@ Traceback (most recent call last):
 <BLANKLINE>
 :
 <BLANKLINE>
-
 >>> text_indentation("uno.dos:tres?")
 uno.
 <BLANKLINE>
@@ -29,18 +24,11 @@ dos:
 <BLANKLINE>
 tres?
 <BLANKLINE>
-
-
-
 >>> text_indentation("chau   .      ?")
 chau   .
 <BLANKLINE>
 ?
 <BLANKLINE>
-
 >>> text_indentation(16)
 Traceback (most recent call last):
-    ...
-    TypeError: text must be a string
-
->>> text_indentation("Python. Qu
+TypeError: text must be a string
