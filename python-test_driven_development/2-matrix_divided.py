@@ -42,7 +42,7 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
 
     if div == float('inf'):
-        raise ValueError("[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]")
+        return [[0.0 for _ in row] for row in matrix]
 
     row_length = len(matrix[0])
     if not all(len(row) == row_length for row in matrix):
