@@ -1,49 +1,22 @@
-Function prints 2 new lines after chars ., ? and :
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Hello. How are you? Fine: thanks.")
+Hello.
 
-	>>> text_indentation = __import__('5-text_indentation').text_indentation
+ How are you?
 
-	>>> text_indentation(67)
-	Traceback (most recent call last):
-		...
-	TypeError: text must be a string
+ Fine:
 
-	>>> text_indentation('some random str?')
-	some random str?
-	<BLANKLINE>
+ thanks.
+>>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem.")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-	>>> text_indentation()
-	Traceback (most recent call last):
-		...
-	TypeError: text_indentation() missing 1 required positional argument: 'text'
+ Quonam modo?
 
-	>>> text_indentation(6.7)
-	Traceback (most recent call last):
-		...
-	TypeError: text must be a string
+ Utrum igitur tibi litteram videor an totas paginas commovere?
 
-	>>> text_indentation("some random str")
-	some random str
+ Non autem hoc:
 
-	>>> text_indentation("some? random str")
-	some?
-	<BLANKLINE>
-	random str
-	>>> text_indentation("Hello.Ready?")
-	Hello.
-	<BLANKLINE>
-	Ready?
-	<BLANKLINE>
-
-	>>> text_indentation("Hello.Ready")
-	Hello.
-	<BLANKLINE>
-	Ready
-
-	>>> text_indentation("Hello. Kunjani? Welcome to SA:    Joe")
-	Hello.
-	<BLANKLINE>
-	Kunjani?
-	<BLANKLINE>
-	Welcome to SA:
-	<BLANKLINE>
-	Joe
+ igitur ne illud quidem.
+>>> text_indentation(123)
+Traceback (most recent call last):
+TypeError: text must be a string
