@@ -1,22 +1,46 @@
->>> text_indentation = __import__('5-text_indentation').text_indentation
->>> text_indentation("Hello. How are you? Fine: thanks.")
-Hello.
+>>> text_indentation("")
 
- How are you?
-
- Fine:
-
- thanks.
->>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem.")
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
- Quonam modo?
-
- Utrum igitur tibi litteram videor an totas paginas commovere?
-
- Non autem hoc:
-
- igitur ne illud quidem.
->>> text_indentation(123)
+>>> text_indentation()
 Traceback (most recent call last):
-TypeError: text must be a string
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+>>> text_indentation(None)
+Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+>>> text_indentation("!?;")  # caracteres no v!?
+<BLANKLINE>
+;
+
+>>> text_indentation(".?:")
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+
+>>> text_indentation("uno.dos:tres?")
+uno.
+<BLANKLINE>
+dos:
+<BLANKLINE>
+tres?
+<BLANKLINE>
+
+
+
+>>> text_indentation("chau   .      ?")
+chau   .
+<BLANKLINE>
+?
+<BLANKLINE>
+
+>>> text_indentation(16)
+Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+>>> text_indentation("Python. Qu
