@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """
-    Function that prints "My name is <first name> <last name>"
+A function that prints: My name is <first name> <last name>
 """
 
 def say_my_name(first_name, last_name=""):
     """
-    Prints a formatted name message.
+    Prints: My name is <first name> <last name>
 
     Args:
-        first_name: The first name (str).
-        last_name: The last name (str, optional).
+        first_name: first name, must be a string
+        last_name: last name, must be a string
 
     Raises:
-        TypeError: If first_name or last_name are not strings.
+        TypeError: if first_name or last_name are not strings
     """
     if not isinstance(first_name, str):
         raise TypeError("first_name must be a string")
