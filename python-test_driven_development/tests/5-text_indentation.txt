@@ -1,0 +1,49 @@
+Function prints 2 new lines after chars ., ? and :
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+	>>> text_indentation(67)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
+
+	>>> text_indentation('some random str?')
+	some random str?
+	<BLANKLINE>
+
+	>>> text_indentation()
+	Traceback (most recent call last):
+		...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+	>>> text_indentation(6.7)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
+
+	>>> text_indentation("some random str")
+	some random str
+
+	>>> text_indentation("some? random str")
+	some?
+	<BLANKLINE>
+	random str
+	>>> text_indentation("Hello.Ready?")
+	Hello.
+	<BLANKLINE>
+	Ready?
+	<BLANKLINE>
+
+	>>> text_indentation("Hello.Ready")
+	Hello.
+	<BLANKLINE>
+	Ready
+
+	>>> text_indentation("Hello. Kunjani? Welcome to SA:    Joe")
+	Hello.
+	<BLANKLINE>
+	Kunjani?
+	<BLANKLINE>
+	Welcome to SA:
+	<BLANKLINE>
+	Joe
