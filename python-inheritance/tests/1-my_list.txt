@@ -2,7 +2,7 @@
 This module tests the MyList class.
 """
 
->>> from 1-my_list import MyList
+
 >>> my_list = MyList()
 >>> my_list.append(3)
 >>> my_list.append(1)
