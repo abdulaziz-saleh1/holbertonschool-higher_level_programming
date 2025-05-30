@@ -8,7 +8,10 @@ class Rectangle(BaseGeometry):
     """A class representing a rectangle."""
 
     def __init__(self, width, height):
-        """Initialize width and height as private attributes, with validation."""
+        """
+        Initialize width and height as private attributes,
+        with validation.
+        """
         self.integer_validator("width", width)
         self.__width = width
 
