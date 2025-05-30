@@ -1,13 +1,60 @@
->>> MyList = __import__('my_list_1_6').MyList
->>> my_list = MyList()
->>> my_list.append(3)
->>> my_list.append(1)
->>> my_list.append(4)
->>> my_list.append(2)
->>> my_list.append(-1)
+Using ``MyList``
+
+>>> MyList = __import__('1-my_list').MyList
+
+Basic test:
+>>> my_list = MyList([1, 4, 2])
 >>> print(my_list)
-[3, 1, 4, 2, -1]
+[1, 4, 2]
 >>> my_list.print_sorted()
-[-1, 1, 2, 3, 4]
+[1, 2, 4]
 >>> print(my_list)
-[3, 1, 4, 2, -1]
+[1, 4, 2]
+
+Test with float:
+>>> my_list = MyList([1.5, 4.5, 2.5])
+>>> print(my_list)
+[1.5, 4.5, 2.5]
+>>> my_list.print_sorted()
+[1.5, 2.5, 4.5]
+>>> print(my_list)
+[1.5, 4.5, 2.5]
+
+Test with negative numbers:
+>>> my_list = MyList([-1, 4, 2])
+>>> print(my_list)
+[-1, 4, 2]
+>>> my_list.print_sorted()
+[-1, 2, 4]
+>>> print(my_list)
+[-1, 4, 2]
+
+Test with empty list:
+>>> my_list = MyList()
+>>> print(my_list)
+[]
+>>> my_list.print_sorted()
+[]
+>>> print(my_list)
+[]
+
+Test present: check append()
+>>> my_list2 = MyList([10, 3, 7])
+>>> print(my_list2)
+[10, 3, 7]
+>>> my_list2.append(5)
+>>> print(my_list2)
+[10, 3, 7, 5]
+>>> my_list2.print_sorted()
+[3, 5, 7, 10]
+>>> print(my_list2)
+[10, 3, 7, 5]
+
+Test with all negatives and zero:
+>>> negative_list = MyList([-1, -5, -3, 0])
+>>> print(negative_list)
+[-1, -5, -3, 0]
+>>> negative_list.print_sorted()
+[-5, -3, -1, 0]
+>>> print(negative_list)
+[-1, -5, -3, 0]
