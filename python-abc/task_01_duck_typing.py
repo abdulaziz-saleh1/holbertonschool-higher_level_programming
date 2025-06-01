@@ -61,8 +61,5 @@ Function to print area and perimeter of a shape.
 """
 
 def shape_info(shape):
-    """
-    Prints area and perimeter.
-    """
-    print("Area: {}".format(shape.area()))
-    print("Perimeter: {}".format(shape.perimeter()))
+    print("Area:", shape.area())
+    print("Perimeter:", shape.perimeter())
