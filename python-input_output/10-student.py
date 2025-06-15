@@ -25,4 +25,4 @@ class Student:
                 attr: getattr(self, attr)
                 for attr in attrs if hasattr(self, attr)
             }
-        return self.__d
+        return self.__dict__
