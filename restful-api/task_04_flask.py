@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-"""Flask API matching expected behavior and test_04_flask.py."""
+"""Flask API that meets all exercise requirements exactly."""
 
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users = {}  # Store users by username
+# In-memory dictionary to store users
+users = {}
 
 
 @app.route('/')
-def index():
-    return jsonify({"message": "Welcome to the Flask API!"})
+def home():
+    return "Welcome to the Flask API!"
 
 
 @app.route('/status', methods=['GET'])
@@ -19,7 +20,7 @@ def status():
 
 
 @app.route('/data', methods=['GET'])
-def get_usernames():
+def list_usernames():
     return jsonify(list(users.keys()))
 
 
@@ -45,9 +46,6 @@ def add_user():
     if not username:
         return jsonify({"error": "Username is required"}), 400
 
-    if username in users:
-        return jsonify({"error": "Username already exists"}), 400
-
     users[username] = {
         "username": username,
         "name": name,
@@ -59,11 +57,6 @@ def add_user():
         "message": "User added",
         "user": users[username]
     }), 201
-
-
-@app.errorhandler(404)
-def handle_404(e):
-    return jsonify({"error": "User not found"}), 404
 
 
 if __name__ == "__main__":
