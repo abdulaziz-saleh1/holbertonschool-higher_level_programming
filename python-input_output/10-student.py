@@ -15,10 +15,14 @@ class Student:
 
     def to_json(self, attrs=None):
         """Returns a dictionary representation of the Student instance.
-        If attrs is a list of strings, only attributes in that list are returned.
-        Otherwise, all attributes are returned.
+        If attrs is a list of strings, only attributes in that list are
+        returned. Otherwise, all attributes are returned.
         """
-        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
-            return {attr: getattr(self, attr)
-                    for attr in attrs if hasattr(self, attr)}
-        return self.__dict__
+        if isinstance(attrs, list) and all(
+            isinstance(attr, str) for attr in attrs
+        ):
+            return {
+                attr: getattr(self, attr)
+                for attr in attrs if hasattr(self, attr)
+            }
+        return self.__d
