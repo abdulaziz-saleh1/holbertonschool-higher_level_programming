@@ -40,11 +40,11 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Not Found: Endpoint not found.")
+            self.wfile.write(b"Endpoint not found")
 
 
 def run():
-    server_address = ("", 8000)  # localhost:8000
+    server_address = ("", 8000)
     httpd = HTTPServer(server_address, SimpleAPIHandler)
     print("Server running at http://localhost:8000")
     httpd.serve_forever()
