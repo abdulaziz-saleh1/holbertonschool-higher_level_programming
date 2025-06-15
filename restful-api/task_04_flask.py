@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Flask API exactly matching the expected output."""
+"""Flask API matching expected behavior and test_04_flask.py."""
 
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# Store users as a dictionary with usernames as keys
-users = {}
+users = {}  # Store users by username
 
 
 @app.route('/')
@@ -20,7 +19,7 @@ def status():
 
 
 @app.route('/data', methods=['GET'])
-def list_usernames():
+def get_usernames():
     return jsonify(list(users.keys()))
 
 
@@ -38,5 +37,34 @@ def add_user():
         return jsonify({"error": "Request must be JSON"}), 400
 
     data = request.get_json()
-    username = data.get('username')
-    name = data.ge
+    username = data.get("username")
+    name = data.get("name")
+    age = data.get("age")
+    city = data.get("city")
+
+    if not username:
+        return jsonify({"error": "Username is required"}), 400
+
+    if username in users:
+        return jsonify({"error": "Username already exists"}), 400
+
+    users[username] = {
+        "username": username,
+        "name": name,
+        "age": age,
+        "city": city
+    }
+
+    return jsonify({
+        "message": "User added",
+        "user": users[username]
+    }), 201
+
+
+@app.errorhandler(404)
+def handle_404(e):
+    return jsonify({"error": "User not found"}), 404
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
