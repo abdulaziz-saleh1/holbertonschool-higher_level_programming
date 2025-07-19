@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """
-Creates the states table in the database using SQLAlchemy.
+This script connects to a MySQL database using SQLAlchemy and creates
+the 'states' table defined in the State class if it does not already exist.
+
+It uses command-line arguments for MySQL credentials and database name.
 """
 
 import sys
 from sqlalchemy import create_engine
 from model_state import Base, State
-
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
