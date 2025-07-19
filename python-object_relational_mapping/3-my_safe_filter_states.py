@@ -1,22 +1,29 @@
 #!/usr/bin/python3
 """
-Prevents SQL injection by using parameterized queries.
+Safely filters states by name from the database using parameterized query.
 
-This script connects to a MySQL database and safely retrieves all rows from
-the `states` table where the name matches a user-provided value.
-The query uses placeholders (%s) instead of string formatting to protect
-against SQL injection attacks (e.g. inputs like 'Arizona'; DROP TABLE ...').
+This script connects to a MySQL database and retrieves rows from the `states`
+table where the name matches a given argument, while preventing SQL injection.
 """
 
 import MySQLdb
 import sys
 
 if __name__ == '__main__':
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2],
-                         db=sys.argv[3], host="localhost", port=3306)
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (sys.argv[4],))
-    for row in cursor.fetchall():
+    db = MySQLdb.connect(
+        user=sys.argv[1],
+        password=sys.argv[2],
+        database=sys.argv[3]
+    )
+
+    query = db.cursor()
+    query.execute("""
+        SELECT * FROM states
+        WHERE name = %s
+        ORDER BY id ASC
+    """, (sys.argv[4],))
+
+    rows = query.fetchall()
+
+    for row in rows:
         print(row)
-    cursor.close()
-    db.close()
