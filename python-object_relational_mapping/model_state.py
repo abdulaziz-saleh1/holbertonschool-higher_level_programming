@@ -1,23 +1,14 @@
 #!/usr/bin/python3
-"""
-Creates the states table in the database using SQLAlchemy.
-"""
+"""Defines State class and Base for SQLAlchemy ORM."""
 
-import sys
-from sqlalchemy import create_engine
-from model_state import Base, State
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
 
-if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: ./6-model_state.py <mysql username> <mysql password> <database name>")
-        sys.exit(1)
+class State(Base):
+    """Represents a row in the states table."""
+    __tablename__ = 'states'
 
-    engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-            sys.argv[1], sys.argv[2], sys.argv[3]
-        ),
-        pool_pre_ping=True
-    )
-
-    Base.metadata.create_all(engine)
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    name = Column(String(128), nullable=False)
