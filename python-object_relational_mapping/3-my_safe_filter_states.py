@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-"""Safely lists states matching the input from the database."""
+"""
+Prevents SQL injection by using parameterized queries.
+
+This script connects to a MySQL database and safely retrieves all rows from
+the `states` table where the name matches a user-provided value.
+The query uses placeholders (%s) instead of string formatting to protect
+against SQL injection attacks (e.g. inputs like 'Arizona'; DROP TABLE ...').
+"""
 
 import MySQLdb
 import sys
