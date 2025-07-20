@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Display</title>
+    <style>
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #999;
+            text-align: center;
+        }
+        th {
+            background-color: #eee;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .no-products {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Product List</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% elif products and products|length > 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product["name"] }}</td>
+                        <td>{{ product["category"] }}</td>
+                        <td>{{ product["price"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-products">No products available.</p>
+    {% endif %}
+</body>
+</html>
